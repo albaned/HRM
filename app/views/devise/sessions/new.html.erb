@@ -1,0 +1,40 @@
+
+
+<% if notice %>
+<p class="notice"><%= notice %></p>
+<% elsif alert %>
+<p class="alert"><%= alert %></p>
+<% end %>
+
+<body  style="background-color:#3f4e62;">
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login">
+          <h3 style="text-align:center;color:#428bca;margin-bottom:25px;">Kyçu</h3>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="form-group">
+            <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.password_field :password, :class => "form-control", :placeholder => "Fjalekalimi" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Kyçu", class: "btn btn-default btn_login" %>
+          </div>
+          <div class="regjistro">
+              <%= link_to "Regjistrohu!",new_registration_path(resource_name), class: "regjistro_bottom" %>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!--main-->

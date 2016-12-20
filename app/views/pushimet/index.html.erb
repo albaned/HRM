@@ -1,0 +1,121 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Adaptiv-IT</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+              <li><%= link_to("En", "/pushimet/index/?lan=en") %></li>
+              <li><%= link_to("Al", "/pushimet/index/?lan=al") %></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-bell"></i>
+                      <b class = "numri">
+                      <%if Formulari.where(status_id: 1).count>0%>
+                          <%=Formulari.where(status_id: 1).count%>
+                      <%end%>
+                      </b>
+                      <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu alert-dropdown">
+                    <%Formulari.where(status_id: 1).each do |f|%>
+                      <li>
+                        <a href="#"><%= f.emri%> <%= f.mbiemri%>
+                          <span class="label label-default"><%= f.pozita%></span>
+                        </a>
+                      </li>
+                        <%end%>
+                      <li class="divider"></li>
+                      <li>
+                        <%= link_to "View All", formularis_path %>
+                      </li>
+                    </ul>
+                 </li>
+                 <li>
+                     <%= link_to "#{dil(session[:lan])}", destroy_user_session_path, :method => 'delete', class: "fa fa-sign-out", style: "margin-right:20px;" %>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <%= link_to "#{paneli(session[:lan])}", dashboard_new_path, class: "fa fa-dashboard" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{appi(session[:lan])}", formularis_path, class: "fa fa-list" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{puntori(session[:lan])}", punetoris_path, class: "fa fa-users" %>
+                    </li>
+                    <li  class="active">
+                        <%= link_to "#{pushimet(session[:lan])}" , pushimet_index_path, class: "fa fa-calendar" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pozita(session[:lan])}", pozis_path, class: "fa fa-bars"  %>
+                    </li>
+                    <li>
+                        <%= link_to "#{statusi(session[:lan])}", statuses_path, class: "fa fa-check-square-o" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{qytet(session[:lan])}", qytetets_path, class: "fa fa-building" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{gjuha(session[:lan])}",gjuhas_path, class: "fa fa-language" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pc(session[:lan])}", pcs_path, class: "fa fa-laptop" %>
+                    </li>
+                        <li >
+                        <%= link_to "#{refuzuar(session[:lan])}", refuzuars_path, class: "fa fa-adjust"%>
+                    </li>
+                    <li >
+                        <%= link_to "#{intervs(session[:lan])}", interviews_path, class: "fa fa-male"%>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">
+                            <%= pushimet(session[:lan]) %>
+                        </h2>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i><%= paneli(session[:lan]) %>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-calendar"></i> <%= pushimet(session[:lan]) %>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="b_g">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>

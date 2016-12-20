@@ -1,0 +1,501 @@
+<% if current_user.admin? %>
+
+<%= form_for(@formulari) do |f| %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="titujt_underline"><p><%= infop(session[:lan]) %></p></div>
+    <div class="underline"></div>
+      <div class="field">
+
+       <div class="col-sm-4"><%= f.label :pozita %></div>
+        <div class="col-sm-8"><%= f.text_field :pozita %></div>
+
+        <%= f.label(:pozita_id)%><br>
+         <div class = "type">
+            <%= f.collection_select(:pozi_id, Pozi.all, :id, :description,prompt: true)%>
+        </div>
+
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{name(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :emri %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{surname(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :mbiemri %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{birth_d(session[:lan])}" %></div>
+        <div class="col-sm-8"><span class="datetime"><%= f.text_field :ditelindja, placeholder: "Zgjedh daten dd/mm/yyyy" %></span></div>
+      </div>
+      <div class="field">
+
+       <div class="col-sm-4"><%= f.label "#{birth_p(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :vendlindja %></div>
+
+        <%= f.label(:qytetet_id)%><br>
+         <div class = "type">
+            <%= f.collection_select(:qytetet_id, Qytetet.all, :id, :description,prompt: true)%>
+        </div>
+
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{id_n(session[:lan])}"%></div>
+       <div class="col-sm-8"> <%= f.text_field :leternjoftimi %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{tel(session[:lan])}" %></div>
+        <div class="col-sm-8"> <%= f.text_field :tel %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label :email %></div>
+        <div class="col-sm-8"><%= f.text_field :email %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{adresa(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :adresa %></div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="titujt_underline"><p><%= info_edu(session[:lan]) %></p></div>
+    <div class="underline"></div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{from(session[:lan])}" %></div>
+        <div class="col-sm-8"> <span class="datetime"><%= f.text_field :edukimi_from, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy"  %></span></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{to(session[:lan])}" %></div>
+        <div class="col-sm-8"><span class="datetime"><%= f.text_field :edukimi_to, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy" %></span></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{inst(session[:lan])}"  %></div>
+        <div class="col-sm-8"><%= f.text_field :edukimi_institucioni %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{drejtimi(session[:lan])}" %></div>
+        <div class="col-sm-8"> <%= f.text_field :edukimi_drejtimi %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{shkalla(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :edukimi_titulli %></div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="titujt_underline"><p><%= info_eksp(session[:lan]) %></p></div>
+    <div class="underline"></div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{from(session[:lan])}" %></div>
+        <div class="col-sm-8"> <span class="datetime"><%= f.text_field :eksperienca_from, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy"  %></span></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{to(session[:lan])}" %></div>
+        <div class="col-sm-8"><span class="datetime"> <%= f.text_field :eksperienca_to, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy" %></span></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{inst(session[:lan])}" %></div>
+        <div class="col-sm-8"> <%= f.text_field :eksperienca_kompania %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{pozita(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :eksperienca_pozita %></div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="titujt_underline"><p><%= info_pergj(session[:lan]) %></p></div>
+    <div class="underline"></div>
+    <div class="field">
+
+      <div class="col-sm-4"><%= f.label "#{gjuha(session[:lan])}" %></div>
+      <div class="col-sm-8"><%= f.text_field :gjuha %></div>
+
+      <%= f.label(:gjuha_id)%><br>
+       <div class = "type">
+          <%= f.collection_select(:gjuha_id, Gjuha.all, :id, :description,prompt: true)%>
+      </div>
+
+    </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{niveli_gj(session[:lan])}" %></div>
+        <div class="col-sm-8"> <%= f.text_field :gjuha_niveli %></div>
+      </div>
+      <div class="field">
+
+        <div class="col-sm-4"><%= f.label "#{pc_s(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :njohurit_kompjuterike %></div>
+
+        <%= f.label(:pc_id)%><br>
+         <div class = "type">
+            <%= f.collection_select(:pc_id, Pc.all, :id, :description,prompt: true)%>
+        </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="titujt_underline"><p><%= doc_shtes(session[:lan]) %></p></div>
+    <div class="underline"></div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{ref_name(session[:lan])}" %></div>
+        <div class="col-sm-8"><%= f.text_field :referenca_emri %></div>
+      </div>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label "#{ref_file(session[:lan])}" %></div>
+        <div class="col-sm-8"> <%= f.text_field :referenca_file %></div>
+      </div>
+      <% if current_user.admin? %>
+        <div class="col-sm-4"><%= f.label :letra_motivuese %></div>
+              <%= link_to "Download Leter", @formulari.letra_motivuese_url %></td>
+        <% else %>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label :letra_motivuese %></div>
+        <div class="col-sm-8"><%= f.file_field :letra_motivuese %></div>
+        <% end %>
+        <tbody>
+              <tr>
+              </tr>
+       </tbody>
+      </div>
+      <% if current_user.admin? %>
+        <div class="col-sm-4"><%= f.label :cv_file %></div>
+              <%= link_to "Download CV", @formulari.cv_file_url %></td>
+      <% else %>
+      <div class="field">
+        <div class="col-sm-4"><%= f.label :cv_file %></div>
+        <div class="col-sm-8"> <%= f.file_field :cv_file %></div>
+        <% end %>
+        <tbody>
+              <tr>
+              </tr>
+       </tbody>
+     </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="titujt_underline"><p><%= rez_app(session[:lan]) %></p></div>
+      <div class="underline"></div>
+        <div class="field">
+          <div class="col-sm-4"><%= f.label "#{intervista(session[:lan])}" %></div>
+          <div class="col-sm-8"><%= f.text_area :intervista, cols: "64", rows: "5"%></div>
+        </div>
+        <div class="field">
+          <div class="col-sm-4"><%= f.label "#{teste(session[:lan])}" %></div>
+        <div class="col-sm-8">  <%= f.text_area :testet,cols: "64", rows: "5" %></div>
+        </div>
+        <div class="field">
+          <div class="col-sm-4"><%= f.label "#{kon_from(session[:lan])}" %></div>
+          <div class="col-sm-8"><%= f.text_field :kontrata_from, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy" %></div>
+        </div>
+        <div class="field">
+          <div class="col-sm-4"><%= f.label "#{kon_to(session[:lan])}" %></div>
+            <div class="col-sm-8"><%= f.text_field :kontrata_to, class: "datepicker", placeholder: "Zgjedh daten dd/mm/yyyy" %></div>
+        </div>
+        <div class="field">
+         <div class="col-sm-4"> <%= f.label "#{paga(session[:lan])}"%></div>
+         <div class="col-sm-8"> <%= f.text_field  :page, :class => "btn_paga" %></div>
+        </div>
+        <div class="field">
+          <%= f.collection_select(:status_id, Status.all, :id, :description,prompt: true)%>
+        </div>
+      </div>
+  </div>
+<div class="actions formulari_btn">
+  <%= f.submit :Update %>
+</div>
+<% end %>
+
+<% else %>
+
+<body style="background-color: #fff;">
+<%= form_for(@formulari) do |f| %>
+
+<% if @formulari.errors.any? %>
+  <div class="erroret" style="background-color: #fff;">
+  <div id="error_explanation">
+    <h2><%= pluralize(@formulari.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @formulari.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  </div>
+<% end %>
+<form>
+  <div class="box">
+    <div class="title">
+      <p>Personal Information *</p>
+    </div>
+      <div class="info_personal">
+  <fieldset class="form-group row">
+  <label class="col-sm-2 form-control-label"><%= f.label(:pozita_id)%></label>
+  <div class="col-sm-10">
+    <%= f.collection_select(:pozi_id, Pozi.all, :id, :description,prompt: true, class: "form-control p_s",placeholder: "Zgjidh Poziten")%>
+  </div>
+  </fieldset>
+
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label"><%= name(session[:lan]) %><p class="ylli">*</p></label>
+    <div class="col-sm-10">
+    <%= f.text_field :emri, class: "form-control ",placeholder: "#{name(session[:lan])}"%>
+    </div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= surname(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :mbiemri, class: "form-control",placeholder: "#{surname(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= birth_d(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :ditelindja, class: "form-control datepicker",placeholder: "Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<fieldset class="form-group row">
+<label class="col-sm-2 form-control-label"><%= f.label(:qytetet_id)%></label>
+<div class="col-sm-10">
+  <%= f.collection_select(:qytetet_id, Qytetet.all, :id, :description,prompt: true, class: "form-control p_s",placeholder: "Zgjidh Poziten")%>
+</div>
+</fieldset>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= shtetsia(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :nacionaliteti, class: "form-control",placeholder: "#{shtetsia(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= id_n(session[:lan]) %> <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :leternjoftimi, class: "form-control",placeholder: "#{id_n(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= tel(session[:lan]) %> <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :tel, class: "form-control",placeholder: "#{tel(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label">Email <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :email, class: "form-control",placeholder: "Email"%>
+</div>
+</div>
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= adresa(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :adresa, class: "form-control",placeholder: "#{adresa(session[:lan])}"%>
+</div>
+</div>
+</div>
+</div>
+<div class="box">
+  <div class="title">
+    <p>Education *</p>
+  </div>
+  <div class="info_personal">
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= from(session[:lan]) %> <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :edukimi_from, class: "form-control datepicker",placeholder: "Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= to(session[:lan]) %>  <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :edukimi_to, class: "form-control datepicker",placeholder: "Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= inst(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :edukimi_institucioni, class: "form-control",placeholder: "#{inst(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= drejtimi(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :edukimi_drejtimi, class: "form-control",placeholder: "#{drejtimi(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= shkalla(session[:lan]) %><p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.text_field :edukimi_titulli, class: "form-control",placeholder: "#{shkalla(session[:lan])}"%>
+</div>
+</div>
+</div>
+</div>
+
+<div class="box">
+  <div class="title">
+    <p>Education *</p>
+  </div>
+  <div class="info_personal">
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= from(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :eksperienca_from, class: "form-control datepicker",placeholder: "Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= to(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :eksperienca_to, class: "form-control datepicker",placeholder:"Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= inst(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :eksperienca_kompania, class: "form-control",placeholder: "#{inst(session[:lan])}" %>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= pozita(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :eksperienca_pozita, class: "form-control",placeholder: "#{pozita(session[:lan])}"%>
+</div>
+</div>
+</div>
+</div>
+<div class="box">
+
+
+  <div class="title">
+    <p>Education *</p>
+  </div>
+  <div class="info_personal">
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= from(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :trajnimi_from, class: "form-control datepicker",placeholder: "Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= to(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :trajnimi_to, class: "form-control datepicker",placeholder:"Shtyp daten dd/mm/yyyy"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= inst(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :trajnimi_institucioni, class: "form-control",placeholder: "#{inst(session[:lan])}" %>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= pozita(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :trajnimi_drejtimi, class: "form-control",placeholder: "#{pozita(session[:lan])}"%>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="box">
+  <div class="title">
+    <p>Education *</p>
+  </div>
+  <div class="info_personal">
+    <fieldset class="form-group row">
+    <label class="col-sm-2 form-control-label"><%= f.label(:gjuha_id)%></label>
+    <div class="col-sm-10">
+      <%= f.collection_select(:gjuha_id, Gjuha.all, :id, :description,prompt: true, class: "form-control p_s",placeholder: "Zgjidh Poziten")%>
+    </div>
+    </fieldset>
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= niveli_gj(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :gjuha_niveli, class: "form-control",placeholder: "#{gobd(session[:lan])}"%>
+</div>
+</div>
+</div>
+</div>
+
+<div class="box">
+  <div class="title">
+    <p>Education *</p>
+  </div>
+  <div class="info_personal">
+    <fieldset class="form-group row">
+    <label class="col-sm-2 form-control-label"><%= f.label(:pc_id)%></label>
+    <div class="col-sm-10">
+      <%= f.collection_select(:p_id, Pc.all, :id, :description,prompt: true, class: "form-control p_s",placeholder: "Zgjidh Poziten")%>
+    </div>
+    </fieldset>
+</div>
+</div>
+
+<div class="box">
+  <div class="title">
+    <p>Others *</p>
+  </div>
+  <div class="info_personal">
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= ref_file(session[:lan]) %></label>
+<div class="col-sm-10">
+<%= f.text_field :referenca_file, class: "form-control",placeholder: "#{upload(session[:lan])}"%>
+</div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-2 form-control-label"><%= lm_upload(session[:lan]) %>  <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= f.file_field :letra_motivuese, class: "form-control",placeholder: "#{upload(session[:lan])}"%>
+</div>
+</div>
+
+<% if current_user.admin? %>
+<div class="form-group row">
+<label class="col-sm-2 form-control-label">CV file: <p class="ylli">*</p></label>
+<div class="col-sm-10">
+<%= link_to "Download CV", @formulari.cv_file_url, class: "form-control",placeholder: "#{upload(session[:lan])}" %>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="form-group row">
+<div class=" col-sm-10">
+ <button class="pull-right"> <%= f.submit "#{apply(session[:lan])}", class: "btn btn-secondary btn_apliko" %></button>
+</div>
+</div>
+
+<%= f.hidden_field :status_id, :value => 1 %>
+</form>
+</body>
+<% end %>
+<% end %>

@@ -1,0 +1,554 @@
+<% if current_user.admin? %>
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">UBT</a>
+            </div>
+            <!-- Top Menu Items -->
+          <ul class="nav navbar-right top-nav">
+      <li><%= link_to("En", "/formularis/index/?lan=en") %></li>
+      <li><%= link_to("Al", "/formularis/index/?lan=al") %></li>
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-bell"></i>
+          <b class = "numri">
+          <%if Formulari.where(status_id: 1).count>0%>
+              <%=Formulari.where(status_id: 1).count%>
+          <%end%>
+          </b>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu alert-dropdown">
+        <%Formulari.where(status_id: 1).each do |f|%>
+          <li>
+            <a href="formularis/<%=f.id%>"><%= f.emri%> <%= f.mbiemri%>
+              <span class="label label-default"><%= f.pozita%></span>
+            </a>
+          </li>
+            <%end%>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "View All", formularis_path %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to "#{dil(session[:lan])}", destroy_user_session_path, :method => 'delete', class: "fa fa-sign-out", style: "margin-right:20px;" %>
+      </li>
+    </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <%= link_to "#{paneli(session[:lan])}", dashboard_new_path, class: "fa fa-dashboard" %>
+                    </li>
+                    <li class="active" >
+                        <%= link_to "#{appi(session[:lan])}", formularis_path, class: "fa fa-list" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{puntori(session[:lan])}", punetoris_path, class: "fa fa-users" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pushimet(session[:lan])}" , pushimet_index_path, class: "fa fa-calendar" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pozita(session[:lan])}", pozis_path, class: "fa fa-bars"  %>
+                    </li>
+                    <li>
+                        <%= link_to "#{statusi(session[:lan])}", statuses_path, class: "fa fa-check-square-o" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{qytet(session[:lan])}", qytetets_path, class: "fa fa-building" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{gjuha(session[:lan])}", gjuhas_path, class: "fa fa-language" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{pc(session[:lan])}", pcs_path, class: "fa fa-laptop" %>
+                    </li>
+                        <li >
+                        <%= link_to "Refuzuar", refuzuars_path, class: "fa fa-adjust"%>
+                    </li>
+                    <li >
+                        <%= link_to "Intervista", interviews_path, class: "fa fa-male"%>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">
+                            </i><%= apun(session[:lan]) %>
+                        </h2>
+                         <% if notice %>
+                          <p class="notice"><%= notice %></p>
+                          <% elsif alert %>
+                          <p class="alert"><%= alert %></p>
+                          <% end %>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-list" style="color:#777;"></i>  <a style="color:#777;" href="#"><%= appi(session[:lan]) %></a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-eye"></i><%= show(session[:lan]) %>
+
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="b_g_sh">
+
+                      <div class="container showi">
+                            <div class="row">
+                <div class="titujt_underline"><p><%= infop(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= for_po(session[:lan]) %></div>
+                    <div class="col-md-8"><strong>
+                      <%@pozi.each do |p| %>
+                          <% if p.id == @formulari.pozi_id %>
+                          <%= p.description %>
+                          <% end %>
+                          <% end %>
+                    </strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= name(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.emri %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= surname(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.mbiemri %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= birth_d(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.ditelindja %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= birth_p(session[:lan]) %></div>
+                    <div class="col-md-8"><strong>
+                      <%@qytetets.each do |v| %>
+                          <% if v.id == @formulari.qytetet_id %>
+                          <%= v.description %>
+                          <% end %>
+                          <% end %>
+                    </strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= id_n(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.leternjoftimi %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= tel(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.tel %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">Email:</div>
+                    <div class="col-md-8"><strong><%= @formulari.email %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= adresa(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.adresa %></strong></div>
+                </div>
+              </div><br><br>
+              <div class="row">
+                <div class="titujt_underline"><p><%= info_edu(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= from(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_from %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= to(session[:lan]) %></div>
+                   <div class="col-md-8">
+                    <% if @formularis.ongoing == true %>
+                      <b style="margin-bottom:0px;"><%= "Ongoing" %></b>
+
+                    <%else%>
+                      <strong><%= @formulari.edukimi_to %></strong>
+                      <%end%>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_institucioni %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= drejtimi(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_drejtimi %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= shkalla(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_titulli %></strong></div>
+                </div>
+              </div><br><br>
+
+            <div class="row">
+              <div class="titujt_underline"><p><p><%= info_eksp(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= from(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.eksperienca_from %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= to(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.eksperienca_to %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.eksperienca_kompania %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= pozita(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.eksperienca_pozita %></strong></div>
+                </div>
+            </div><br><br>
+            <div class="row">
+              <div class="titujt_underline"><p><p><%= info_trajn(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= from(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.trajnimi_from %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= to(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.trajnimi_to %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.trajnimi_institucioni %></strong></div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= pozita(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.trajnimi_drejtimi %></strong></div>
+                </div>
+            </div><br><br>
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= info_pergj(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+              <div class="col-md-12">
+                  <div class="col-md-4"><%= gjuha(session[:lan]) %></div>
+                  <div class="col-md-8"><strong>
+                    <%@gjuhas.each do |g| %>
+                        <% if g.id == @formulari.gjuha_id %>
+                        <%= g.description %>
+                        <% end %>
+                        <% end %>
+                  </strong></div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-4"><%= niveli_gj(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= @formulari.gjuha_niveli %></strong></div>
+              </div>
+              <div class="col-md-12">
+                  <div class="col-md-4"><%= pc_s(session[:lan]) %></div>
+                  <div class="col-md-8"><strong>
+                    <%@pcs.each do |c| %>
+                        <% if c.id == @formulari.pc_id %>
+                        <%= c.description %>
+                        <% end %>
+                        <% end %>
+                  </strong></div>
+              </div>
+            </div><br><br>
+
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= doc_shtes(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+
+              <div class="col-md-12">
+                <div class="col-md-4"><%= ref_file(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= link_to "Shkarko Referencen", @formulari.referenca_file_url %></td></strong></div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-4"><%= lm_upload(session[:lan]) %></div>
+                <div class="col-md-8 linku"><strong><%= link_to "Shkarko Letern", @formulari.letra_motivuese_url %></td></strong></div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-4">CV file:</div>
+                <div class="col-md-8 linku"><strong><%= link_to "Shkarko CV", @formulari.cv_file_url %></td></strong></div>
+              </div>
+
+                  </div><br><br>
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= info_pergj(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+              <div class="col-md-12">
+                <div class="col-md-4"><%= intervista(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= @formulari.intervista %></strong></div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-4"><%= teste(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= @formulari.testet %></strong></div>
+              </div>
+            </div>
+              <br><br>
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= pdf(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+              <div class="col-md-12">
+                  <div class="col-md-4">PDF:</div>
+                  <div class="col-md-8 linku"><strong><%= link_to "#{ pdf(session[:lan])}", :action => 'show', :id => @formularis.id, :format => 'pdf', class: "btn btn-default" %></strong></div>
+              </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= statusi(session[:lan]) %></div>
+                    <div class="col-md-8">
+                    <strong>
+                    <%@status.each do |status|%>
+                      <%if status.id == @formulari.status_id%>
+                        <%= status.description %>
+                      <%end%>
+                    <%end%>
+                    </strong>
+                    </div>
+                  </div>
+              </div>
+
+            <% if current_user.admin? %>
+
+              <td><%= link_to "#{kth(session[:lan])}", formularis_path, :class => "back_btn", style: "margin-top: 35px;" %></td>
+
+              <% else %>
+              <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
+          </div>
+            <% end %>
+
+            <% else %>
+            <div class="container">
+                  <div class="row">
+                <h3 style="color:#3bab57; text-align:center; "><%= pyk(session[:lan]) %></h3>
+                  <h5 style="text-align:center;"><%= doik(session[:lan]) %></h5>
+                  <br><br>
+                <div class="titujt_underline"><p><%= infop(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= pozita(session[:lan]) %></div>
+                    <div class="col-md-8"><strong>
+
+                      <%@pozi.each do |p|%>
+                      <%if p.id == @formulari.pozi_id%>
+                        <%= p.description %>
+                      <%end%>
+                    <%end%>
+                    </strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= name(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.emri %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= surname(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.mbiemri %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= birth_d(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.ditelindja %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= birth_p(session[:lan]) %></div>
+                    <div class="col-md-8"><strong>
+
+                      <%@qytetets.each do |v|%>
+                      <%if v.id == @formulari.qytetet_id%>
+                        <%= v.description %>
+                      <%end%>
+                    <%end%>
+                    </strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= id_n(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.leternjoftimi %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= tel(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.tel %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">Email:</div>
+                    <div class="col-md-8"><strong><%= @formulari.email %></strong></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4"><%= adresa(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.adresa %></strong></div>
+                </div>
+              </div><br><br>
+
+              <div class="row">
+                <div class="titujt_underline"><p><%= info_edu(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= from(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_from %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= to(session[:lan]) %></div>
+                  <div class="col-md-8">
+                    <% if @formularis.ongoing == true %>
+                      <p style="margin-bottom:0px;"><%= "Ongoing" %></p>
+
+                    <%else%>
+                      <strong><%= @formulari.edukimi_to %></strong>
+                      <%end%>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_institucioni %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= drejtimi(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_drejtimi %></strong></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-4"><%= shkalla(session[:lan]) %></div>
+                  <div class="col-md-8"><strong><%= @formulari.edukimi_titulli %></strong></div>
+                </div>
+              </div><br><br>
+
+              <div class="row">
+                <div class="titujt_underline"><p><%= info_eksp(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= from(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.eksperienca_from %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= to(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.eksperienca_to %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.eksperienca_kompania %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= pozita(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.eksperienca_pozita %></strong></div>
+                  </div>
+              </div><br><br>
+              <div class="row">
+                <div class="titujt_underline"><p><%= info_trajn(session[:lan]) %></p></div>
+                <div class="underline2"></div>
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= from(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.trajnimi_from %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= to(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.trajnimi_to %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= inst(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.trajnimi_institucioni %></strong></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="col-md-4"><%= pozita(session[:lan]) %></div>
+                    <div class="col-md-8"><strong><%= @formulari.trajnimi_drejtimi %></strong></div>
+                  </div>
+              </div><br><br>
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= info_pergj(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+              <div class="col-md-12">
+                  <div class="col-md-4"><%= gjuha(session[:lan]) %></div>
+                  <div class="col-md-8"><strong>
+                    <%@gjuhas.each do |g|%>
+                    <%if g.id == @formulari.gjuha_id%>
+                      <%= g.description %>
+                    <%end%>
+                  <%end%>
+                  </strong></div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-md-4"><%= niveli_gj(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= @formulari.gjuha_niveli %></strong></div>
+              </div>
+              <div class="col-md-12">
+                  <div class="col-md-4"><%= pc_s(session[:lan]) %></div>
+                  <div class="col-md-8"><strong>
+                    <%@pcs.each do |c|%>
+                    <%if c.id == @formulari.pc_id%>
+                      <%= c.description %>
+                    <%end%>
+                  <%end%>
+                  </strong></div>
+              </div>
+            </div><br><br>
+
+
+            <div class="row">
+              <div class="titujt_underline"><p><%= doc_shtes(session[:lan]) %></p></div>
+              <div class="underline2"></div>
+
+              <div class="col-md-12">
+                <div class="col-md-4"><%= ref_file(session[:lan]) %></div>
+                <div class="col-md-8"><strong><%= link_to "Download Referencen", @formulari.referenca_file_url %></td></strong></div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-4"><%= lm_upload(session[:lan]) %></div>
+                <div class="col-md-8 linku"><strong><%= link_to "#{shakark(session[:lan])}", @formulari.letra_motivuese_url %></td></strong></div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-4">CV file:</div>
+                <div class="col-md-8 linku"><strong><%= link_to "#{shacv(session[:lan])}", @formulari.cv_file_url %></td></strong></div>
+              </div>
+              </div><br><br>
+            </div>
+
+            <div class="field sign_out">
+  <%= link_to "Sign out", destroy_user_session_path, :method => 'delete', class: "btn btn-default bb" %>
+  </div>
+    </div>
+    </div>
+  </div>
+                    </div>
+            <!-- /.container-fluid -->
+                </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+  <% end %>

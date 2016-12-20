@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Kontrata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Biznesi</th>
+      <th>Nr biznesit</th>
+      <th>Emri</th>
+      <th>Emri prindit</th>
+      <th>Mbiemri</th>
+      <th>Vendlindja</th>
+      <th>Ditelindja</th>
+      <th>Adresa</th>
+      <th>Qyteti</th>
+      <th>Shteti</th>
+      <th>Leternjoftimi</th>
+      <th>Pozita</th>
+      <th>Kontrata prej</th>
+      <th>Kontrata deri</th>
+      <th>Orari jave</th>
+      <th>Java ditet</th>
+      <th>Orari from</th>
+      <th>Orari to</th>
+      <th>Pauza</th>
+      <th>Pushimi vjetore</th>
+      <th>Paga kontrata</th>
+      <th>Paga text</th>
+      <th>Data nenshkrimit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kontrata.each do |kontratum| %>
+      <tr>
+        <td><%= kontratum.biznesi %></td>
+        <td><%= kontratum.nr_biznesit %></td>
+        <td><%= kontratum.emri %></td>
+        <td><%= kontratum.emri_prindit %></td>
+        <td><%= kontratum.mbiemri %></td>
+        <td><%= kontratum.vendlindja %></td>
+        <td><%= kontratum.ditelindja %></td>
+        <td><%= kontratum.adresa %></td>
+        <td><%= kontratum.qyteti %></td>
+        <td><%= kontratum.shteti %></td>
+        <td><%= kontratum.leternjoftimi %></td>
+        <td><%= kontratum.pozita %></td>
+        <td><%= kontratum.kontrata_prej %></td>
+        <td><%= kontratum.kontrata_deri %></td>
+        <td><%= kontratum.orari_jave %></td>
+        <td><%= kontratum.java_ditet %></td>
+        <td><%= kontratum.orari_from %></td>
+        <td><%= kontratum.orari_to %></td>
+        <td><%= kontratum.pauza %></td>
+        <td><%= kontratum.pushimi_vjetore %></td>
+        <td><%= kontratum.paga_kontrata %></td>
+        <td><%= kontratum.paga_text %></td>
+        <td><%= kontratum.data_nenshkrimit %></td>
+        <td><%= link_to 'Show', kontratum %></td>
+        <td><%= link_to 'Edit', edit_kontratum_path(kontratum) %></td>
+        <td><%= link_to 'Destroy', kontratum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kontratum', new_kontratum_path %>

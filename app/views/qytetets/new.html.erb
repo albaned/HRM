@@ -1,0 +1,157 @@
+<% if current_user.admin? %>
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">UBT</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                 <li>
+                     <%= link_to "#{dil(session[:lan])}", destroy_user_session_path, :method => 'delete', class: "fa fa-sign-out", style: "margin-right:20px;" %>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <%= link_to "#{paneli(session[:lan])}", dashboard_new_path, class: "fa fa-dashboard" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{appi(session[:lan])}", formularis_path, class: "fa fa-list" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{puntori(session[:lan])}", punetoris_path, class: "fa fa-users" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pushimet(session[:lan])}" , pushimet_index_path, class: "fa fa-calendar" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{pozita(session[:lan])}", pozis_path, class: "fa fa-bars"  %>
+                    </li>
+                    <li>
+                        <%= link_to "#{statusi(session[:lan])}", statuses_path, class: "fa fa-check-square-o" %>
+                    </li>
+                    <li class="active">
+                        <%= link_to "#{qytet(session[:lan])}", qytetets_path, class: "fa fa-building" %>
+                    </li>
+                    <li >
+                        <%= link_to "#{gjuha(session[:lan])}",gjuhas_path, class: "fa fa-language" %>
+                    </li>
+                    <li>
+                        <%= link_to "#{pc(session[:lan])}", pcs_path, class: "fa fa-laptop" %>
+                    </li>
+                        <li >
+                        <%= link_to "#{refuzuar(session[:lan])}", refuzuars_path, class: "fa fa-adjust"%>
+                    </li>
+                    <li >
+                        <%= link_to "#{intervs(session[:lan])}", interviews_path, class: "fa fa-male"%>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">
+                          <h2 class="page-header">
+                              <%= regj_qyt(session[:lan]) %>
+                          </h2>
+                           <% if notice %>
+                            <p class="notice"><%= notice %></p>
+                            <% elsif alert %>
+                            <p class="alert"><%= alert %></p>
+                            <% end %>
+                          <ol class="breadcrumb">
+                              <li>
+                                  <i class="fa fa-bars" style="color:#777;"></i>  <a style="color:#777;" href="index.html"><%= pozita(session[:lan]) %></a>
+                              </li>
+                              <li class="active">
+                                  <i class="fa fa-history"></i> <%= regj_qyt(session[:lan]) %>
+                              </li>
+                          </ol>
+                      </div>
+                  </div>
+                  <!-- /.row -->
+
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="b_g">
+                             <%= form_for(@qytetet) do |f| %>
+                             <% if @qytetet.errors.any? %>
+     					                <div id="error_explanation">
+     					                  <h2><%= pluralize(@qytetet.errors.count, "error") %> prohibited this pozi from being saved:</h2>
+
+     					                  <ul>
+     					                  <% @pozi.errors.full_messages.each do |message| %>
+     					                    <li><%= message %></li>
+     					                  <% end %>
+     					                  </ul>
+     					                </div>
+     					              <% end %>
+
+                                   <div class="field">
+                                       <div class="col-sm-4">
+                                         <%= f.label :description %></div>
+                                       <div class="col-sm-8">
+                                         <%= f.text_field :description, class: "punetori_input" %></div>
+                                     </div>
+     						      <div class="actions">
+     						        <div class="actions formulari_btn" style="margin-right:438px"><%= f.submit "#{ruj(session[:lan])}" %></div>
+     						      </div>
+     						    <% end %>
+
+
+                             </div>
+                         </div>
+                 <!-- /.container-fluid -->
+                     </div>
+             </div>
+             <!-- /#page-wrapper -->
+
+         </div>
+       <% end %>
+
+
+<%= link_to 'Back', qytetets_path %>

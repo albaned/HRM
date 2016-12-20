@@ -1,0 +1,80 @@
+// Place all the styles related to the pozita controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.pozita_s {
+  margin-bottom: 35px;
+}
+  .content_pozita_d li {
+    margin-bottom: 10px;
+  }
+  .fa-angle-right:before {
+    margin-right: 15px;
+  }
+  .content_pozita_d ul {
+    list-style: none;
+  }
+  .next_btn {
+    background-color: #55a747;
+    border-color: #55a747;
+    color: #fff;
+    margin-top: 45px;
+  }
+  .next_btn:hover {
+    background-color: #509045;
+    border-color: #509045;
+    color: #fff;
+    transition: 2em;
+  }
+  .next_btn:focus {
+    background-color: #509045;
+    border-color: #509045;
+    color: #fff;
+  }
+  .content_pozita_d {
+    background-color: rgba(227, 227, 228, 0.2);
+    border: 1px solid #E4E1E1;
+    height: 385px;
+  }
+  .content_pozita_d h3 {
+    margin: 25px;
+
+  }
+
+  .content_pozita_m h1 {
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 3rem;
+    padding: 0;
+    width: 70%;
+  }
+  .content_pozita_m h2 {
+    font-size: 1.2em;
+    line-height: 1.4;
+    margin: 0;
+    width: 90%;
+    margin-bottom: 15px;
+  }
+  #nav_pozita {
+    border-bottom: 1px solid #9e9e9e;
+    margin-bottom: 35px;
+  }
+  .pjesa_m {
+    margin-bottom: 5px;
+  }
+  .pjesa_m h3 {
+    margin: 0;
+    padding: 0;
+  }
+  .pjesa_d {
+    float: right;
+  }
+  .pjesa_d ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+  }
+  .pjesa_d li {
+    padding-right: 35px;
+    font-size: 18px;
+  }

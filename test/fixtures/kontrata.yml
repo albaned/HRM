@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  biznesi: MyString
+  nr_biznesit: MyString
+  emri: MyString
+  emri_prindit: MyString
+  mbiemri: MyString
+  vendlindja: MyString
+  ditelindja: 2016-04-18
+  adresa: MyString
+  qyteti: MyString
+  shteti: MyString
+  leternjoftimi: MyString
+  pozita: MyString
+  kontrata_prej: 2016-04-18
+  kontrata_deri: 2016-04-18
+  orari_jave: MyString
+  java_ditet: MyString
+  orari_from: MyString
+  orari_to: MyString
+  pauza: MyString
+  pushimi_vjetore: MyString
+  paga_kontrata: MyString
+  paga_text: MyString
+  data_nenshkrimit: 2016-04-18
+
+two:
+  biznesi: MyString
+  nr_biznesit: MyString
+  emri: MyString
+  emri_prindit: MyString
+  mbiemri: MyString
+  vendlindja: MyString
+  ditelindja: 2016-04-18
+  adresa: MyString
+  qyteti: MyString
+  shteti: MyString
+  leternjoftimi: MyString
+  pozita: MyString
+  kontrata_prej: 2016-04-18
+  kontrata_deri: 2016-04-18
+  orari_jave: MyString
+  java_ditet: MyString
+  orari_from: MyString
+  orari_to: MyString
+  pauza: MyString
+  pushimi_vjetore: MyString
+  paga_kontrata: MyString
+  paga_text: MyString
+  data_nenshkrimit: 2016-04-18

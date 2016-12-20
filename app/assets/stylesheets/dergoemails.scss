@@ -1,0 +1,56 @@
+// Place all the styles related to the Dergoemails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h4 {
+  font-weight: 600;
+}
+  .koha select {
+    width: 200px;
+        background-color: rgba(0, 0, 0, 0.25);
+        border: rgba(41, 63, 70, 0.15);
+  }
+  .subjekti_dergo {
+      width: 90%;
+      border: 1px solid rgba(41, 63, 70, 0.15);
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  .text_area_dergo textarea {
+    width: 90%;
+    height: 50px;
+    border: 1px solid rgba(41, 63, 70, 0.15);
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  .bg_send {
+    margin-top: 50px;
+    padding: 90px;
+    background-color: rgba(58, 87, 101, 0.76);
+    color: #fff;
+  }
+  .bg_send_hapsira {
+    margin-bottom: 70px;
+  }
+  .dergo_buton {
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.35);
+      padding: 5px 50px;
+      margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+  .title_dergo {
+    text-align: center;
+    margin: 15px 0px 50px 0px;
+  }
+  .title_dergo h4 {
+    font-size: 22px;
+  }
+  hr {
+    width: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 1px solid #eee;
+  }
+  .image_dergo {
+    text-align: center;
+    margin-bottom: 45px;
+  }

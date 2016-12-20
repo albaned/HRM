@@ -1,0 +1,32 @@
+<div class="field borderr">
+  <%= f.attribute_fields do |a| %>
+    <%= ks(session[:lan]) %> <%= a.attribute_select associations: [:category, :pozis]%>
+  <% end %>
+  <div style="display: none;"><%= f.predicate_select %></div>
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value, class: "radius_button" %>
+    <%= f.submit "#{kerse(session[:lan])}", class: "radius_button" %>
+
+  <% end %>
+</div>
+<style>
+.radius_button, input {
+     border: 0px;
+    border-bottom: 1px solid rgba(134, 134, 134, 0.52);
+    outline: 0;
+}
+.radius_button {
+  margin-bottom: 40px;
+  background-color: #fff;
+}
+select {
+border: 0px;
+border-bottom: 1px solid rgba(134, 134, 134, 0.52);
+background-color: #fff;
+padding: 2px;
+outline: 0;
+}
+.borderr {
+  margin-top: 15px;
+}
+</style>

@@ -1,0 +1,20 @@
+
+      <div class="container Formulari">
+  <div class="korniza">
+    <h2 class="h2_tag"><%= wjaf(session[:lan]) %></h2>
+    <div class="text_inside">
+
+    <h4><%= hta(session[:lan]) %></h4>
+    <ol id="instructions_field">
+      <li><%= fotf(session[:lan]) %></li>
+      <li><%= ucv(session[:lan]) %></li>
+      <li><%= uip(session[:lan]) %></li>
+      <li><%= wml(session[:lan]) %></li>
+    </ol>
+
+
+    <br>
+  </div>
+  <%= link_to "#{apply(session[:lan])}", new_user_session_path, :class => "fa fa-long-arrow-right myButton" %>
+</div>
+</div>

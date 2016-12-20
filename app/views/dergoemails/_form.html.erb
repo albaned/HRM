@@ -1,0 +1,68 @@
+<%= form_for(@dergoemail) do |f| %>
+
+<div class="container">
+<div class="bg_send ">
+  <div class="image_dergo">
+    <%= image_tag "letter.png" %>
+  </div>
+
+  <div class="title_dergo">
+    <h4>Plotesoni fushat per te derguar aplikantit @email </h4>
+      <hr>
+  </div>
+<div class="row">
+<div class="bg_send_hapsira">
+<div class="col-sm-3">
+
+  <h4>Interview Time: </h4>
+
+</div>
+
+<div class="col-sm-9">
+    <div class="koha">
+    <%= f.time_select :interview_time %>
+        </div>
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+<div class="bg_send_hapsira">
+<div class="col-md-3 col-sm-6">
+
+  <h4>Subjekti : </h4>
+
+</div>
+
+<div class="col-md-9 col-sm-6">
+    <div class="subjekti_dergo">
+      <%= f.text_field :subject %>
+        </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="bg_send_hapsira">
+<div class="col-md-3 col-sm-6">
+
+  <h4>Description : </h4>
+
+</div>
+
+<div class="col-md-9 col-sm-6">
+    <div class="text_area_dergo">
+     <%= f.text_area :body %>
+        </div>
+          <%= f.submit :Dergo, class: "dergo_buton" %>
+</div>
+</div>
+</div>
+
+
+
+<% end %>
+</div>
+</div>

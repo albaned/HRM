@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pozi_id: 1
+  emri: MyString
+  mbiemri: MyString
+  status_id: 1
+  ditelindja: 2016-04-25
+  vendlindja: MyString
+  tel: MyString
+  email: MyString
+
+two:
+  pozi_id: 1
+  emri: MyString
+  mbiemri: MyString
+  status_id: 1
+  ditelindja: 2016-04-25
+  vendlindja: MyString
+  tel: MyString
+  email: MyString

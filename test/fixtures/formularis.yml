@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pozita: MyString
+  emri: MyString
+  mbiemri: MyString
+  ditelindja: 2016-02-25
+  vendlindja: MyString
+  nacionaliteti: MyString
+  leternjoftimi: 1
+  tel: MyString
+  email: MyString
+  edukimi_from: 2016-02-25
+  edukimi_to: 2016-02-25
+  edukimi_institucioni: MyString
+  edukimi_drejtimi: MyString
+  edukimi_titulli: MyString
+  eksperienca_from: 2016-02-25
+  eksperienca_to: 2016-02-25
+  eksperienca_kompania: MyString
+  eksperienca_pozita: MyString
+  gjuha: MyString
+  gjuha_niveli: MyString
+  njohurit_kompjuterike: MyString
+  referenca_file: MyString
+  letra_motivuese: MyText
+  cv_file: MyString
+  intervista: MyText
+  testet: MyText
+  kontrata_from: 2016-02-25
+  kontrata_to: 2016-02-25
+  page: 1
+
+two:
+  pozita: MyString
+  emri: MyString
+  mbiemri: MyString
+  ditelindja: 2016-02-25
+  vendlindja: MyString
+  nacionaliteti: MyString
+  leternjoftimi: 1
+  tel: MyString
+  email: MyString
+  edukimi_from: 2016-02-25
+  edukimi_to: 2016-02-25
+  edukimi_institucioni: MyString
+  edukimi_drejtimi: MyString
+  edukimi_titulli: MyString
+  eksperienca_from: 2016-02-25
+  eksperienca_to: 2016-02-25
+  eksperienca_kompania: MyString
+  eksperienca_pozita: MyString
+  gjuha: MyString
+  gjuha_niveli: MyString
+  njohurit_kompjuterike: MyString
+  referenca_file: MyString
+  letra_motivuese: MyText
+  cv_file: MyString
+  intervista: MyText
+  testet: MyText
+  kontrata_from: 2016-02-25
+  kontrata_to: 2016-02-25
+  page: 1

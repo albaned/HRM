@@ -1,0 +1,77 @@
+<div id="wrapper">
+ <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          HRM Project
+        </a>
+      </li>
+      <li>
+        <%= link_to "#{paneli(session[:lan])}", dashboard_new_path%>
+      </li>
+      <li>
+        <%= link_to "#{appi(session[:lan])}", formularis_path %>
+      </li>
+      <li>
+        <%= link_to "#{regj_statusi(session[:lan])}", new_punetori_path %>
+      </li>
+      <li>
+      <%= link_to "#{pozita(session[:lan])}", pozis_path %>
+    </li>
+    <li>
+      <%= link_to "#{statusi(session[:lan])}", statuses_path %>
+    </li>
+      <li>
+        <%= link_to "#{puntori(session[:lan])}" %>
+      </li>
+      <li>
+        <%= link_to "Pushimet" %>
+      </li>
+      <li>
+        <%= link_to "#{qytet(session[:lan])}", qytetets_path %>
+      </li>
+      <li>
+        <%= link_to "#{gjuha(session[:lan])}", qytetets_path %>
+      </li>
+      <li>
+        <%= link_to "#{pc(session[:lan])}", pcs_path %>
+      </li>
+         <li>
+                        <%= link_to "#{refuzuar(session[:lan])}", refuzuars_path%>
+                    </li>
+                    <li >
+                        <%= link_to "#{intervs(session[:lan])}", interviews_path%>
+                    </li>
+      <li>
+        <%= link_to "Profili im" %>
+      </li>
+      <li>
+        <%= link_to "#{dil(session[:lan])}", destroy_user_session_path, :method => 'delete' %>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+<%= form_for(@status) do |f| %>
+  <% if @status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+      <% @status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

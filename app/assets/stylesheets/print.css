@@ -1,0 +1,19 @@
+@media print
+{
+	div.printi{
+
+		display: none;
+	}
+	
+	#wrapper{
+		margin-left: -50mm;
+		font-size: 18px;
+	}
+ 
+
+	div.data{
+		margin-bottom: 10mm;
+		margin-top: 5mm;
+	}
+
+}

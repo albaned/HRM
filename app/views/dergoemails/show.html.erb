@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Interview_time:</strong>
+  <%= @dergoemail.time %>
+</p>
+<p>
+  <strong>Subject:</strong>
+  <%= @dergoemail.subject %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @dergoemail.body %>
+</p>
+
+<%= link_to 'Edit', edit_dergoemail_path(@dergoemail) %> |
+<%= link_to 'Back', formularis_path %>

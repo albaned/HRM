@@ -1,0 +1,194 @@
+<div class="container">
+
+                  <style>
+                  	.nenet2 {
+                  		text-align: center;
+                  	}
+
+                  	.inputat{
+                  		text-transform: capitalize;
+                  	}
+                  	span{
+                  		background-color: red;
+                  	}
+                  </style>
+                <%= form_for(@kontratum) do |f| %>
+                  <% if @kontratum.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@kontratum.errors.count, "error") %> prohibited this kontratum from being saved:</h2>
+
+                      <ul>
+                      <% @kontratum.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <div class="row">
+                    <div class="right_things">
+                      <div class="col-md-12 right_titull">
+                         <p style="text-align:right;border-bottom:1px solid green;"> Kontratë Pune | REG-6200-7</p>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="top_pershkrimi">
+                      <div class="col-md-12">
+                        <p>Në mbështetje të nenit 10 të rregullores së .................-ut, nr 2001/27 për Ligjin Themelor të Punës, palët kontraktuese si subjekte të marrëdhënies juridike të punës lidhin këtë:</p>
+                      </div>
+                      <div class="col-md-12 top_titulli">
+                        <h2 style="text-align:center;">KONTRATË PUNE</h2>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="lidhja_mes">
+                      <div class="col-md-12">
+                        <p>E lidhur ndërmjet:</p>
+                      </div>
+                      <div class="col-md-12">
+
+                      <p> (1) <b class="inputat"><%= @kontratum.biznesi %></b>
+                          me seli ne Prishtinë, Republika e Kosovës dhe me numër të biznesit <b class="inputat"> <%= @kontratum.nr_biznesit %></b> të lëshuar nga Ministria e Tregtisë dhe Industrisë e Republikës së Kosovës, të cilën e përfaqëson Armend Osaj  nga një anë si punëdhënës  
+                      </p>
+                      <p>dhe</p>
+                      <p>
+                          (2) <b class="inputat"><%= @kontratum.emri %></b>
+                        / <b class="inputat"><%= @kontratum.emri_prindit %></b> / <b class="inputat"> <%= @kontratum.mbiemri %></b>, i lindur në 
+                            <b class="inputat"><%= @kontratum.vendlindja %></b> me datë 
+                           <b class="inputat"><%= @kontratum.ditelindja %></b>
+                            me adresë  <b class="inputat"><%= @kontratum.adresa %></b>
+                           / <b class="inputat"><%= @kontratum.qyteti %></b>
+                            / <b class="inputat"><%= @kontratum.shteti %></b> dhe me numër të letërnjoftimit <b class="inputat"><%= @kontratum.leternjoftimi %></b>
+                           të lëshuar nga Mentor Sahiti, nga ana tjetër si punëmarrës.
+                      </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row"> 
+                    <div class="nenet">
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 1</h4>
+                        <p>
+                          Punëdhënësi i ofron, ndërsa punëmarrësi pranon të themelojë marrëdhënie juridike të punës me punëdhënësin dhe   caktohet në vendin e punës  
+                          <b class="inputat"><%= @kontratum.pozita %></b>. <br>
+                          Punët kryesore të këtij vendi të punës janë të përshkruara në përshkrimin e punës.<br>
+                          Punëmarrësi është i detyruar të kryejë edhe punë tjera, për të cilat ka përgatitje profesionale dhe aftësi pune, për të   cilat urdhëron personi i autorizuar i punëdhënësit.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 2</h4>
+                        <p>Kjo kontratë hyn në fuqi me datë <b class="inputat"><%= @kontratum.kontrata_prej %></b> dhe vlen deri me datë <b class="inputat"><%= @kontratum.kontrata_deri %></b></p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 3</h4>
+                        <p>
+                          Punëmarrësi do ti kryejë punët dhe detyrat në Prishtinë.<br>
+                          Punëmarrësi është i njoftuar dhe pajtohet se gjatë kohës së punës mund të caktohet të punojë edhe në një tjetër vend pune, sipas nevojave të procesit të punës dhe kushteve të caktuara me ligj, përkatësisht në kontratë.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 4</h4>
+                        <p>
+                          Orari i plotë i punës efektive është <b class="inputat"><%= @kontratum.orari_jave %></b> orë pune në javë.<br>
+                          Gjatë javës punohet <b class="inputat"><%= @kontratum.java_ditet %></b> ditë pune (nga e Hëna deri të Premten).
+                          Orari ditor i punës fillon në orën <b class="inputat"><%= @kontratum.orari_from %></b> dhe përfundon në orën <b class="inputat"><%= @kontratum.orari_to %></b> .<br>
+                          Brenda orarit ditor të punës është llogaritur edhe pauza prej <b class="inputat"><%= @kontratum.pauza %></b> minutash.<br>
+                          Punëdhënësi mund ta ndryshoj orarin ditor të punës, sipas nevojës që kërkon puna.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 5</h4>
+                        <p>
+                          Punëmarrësi ka të drejtën e pushimit vjetor në kohëzgjatje prej <b class="inputat"> <%= @kontratum.pushimi_vjetore %></b> ditë pune. 
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 6</h4>
+                        <p>
+                          Paga themelore mujore për punëmarrësin, për këtë vend pune, caktohet në shumën prej <b class="inputat"><%= @kontratum.paga_kontrata %></b> € (me shkronja  <b class="inputat"><%= @kontratum.paga_text %></b> EURO) në muaj për normën e plotë të orarit të punës dhe rezultate të kënaqshme në punë.<br>
+                          Pagesa bëhet çdo muaj, për muajin paraprak, përmes xhirollogarisë së punëmarrësit, te banka e autorizuar.
+                        </p>
+                      </div>
+                      <br>
+                      <div class="col-md-12 right_titull">
+                         <p style="text-align:right;border-bottom:1px solid green;"> Kontratë Pune | REG-6200-7</p>
+                      </div>
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 7</h4>
+                        <p>
+                          Punëdhënësi obligohet të sigurojë dhe të zbatojë mjetet dhe masat e mbrojtjes në punë sipas normativave dhe   masave të parashikuar me ligj.<br>
+                          Punëmarrësi është i detyruar t’iu përmbahet masave të caktuara të mbrojtjes në punë.
+                        </p>
+                      </div>
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 8</h4>
+                        <p>
+                          Punëdhënësi dhe punëmarrësi janë të obliguar që t’i paguajnë të gjitha tatimet dhe kontributet e parapara me ligj.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 9</h4>
+                        <p>
+                          Punëdhënësi dhe punëmarrësi i pranojnë të gjitha të drejtat, obligimet dhe përgjegjësitë e caktuara me ligj dhe me  këtë kontratë.<br>
+                          Për kontestin eventual të moszbatimit të kësaj kontrate, palët kontraktuese e pranojnë kompetencën e Gjykatës   Komunale në Prishtinë.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 10</h4>
+                        <p>
+                          Secila palë mund ta shkëputë këtë kontratë në mënyrë të një anshme, sipas kushteve dhe rasteve të caktuara me ligj duke paralajmëruar palën tjetër së paku dy javë para se ka ndërmend ta ndërpres kontratën.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 11</h4>
+                        <p>
+                          Në asnjë rast, dispozitat e kësaj kontrate nuk mund të jenë më pak të favorshme për punëmarrësin, se dispozitat e Ligjit, për sa u përket të drejtave dhe kushteve në marrëdhënien juridike të punës.<br>
+                          Për rastet e paparashikuara në këtë kontratë, zbatohen drejtpërdrejt dispozitat përkatëse ligjore.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 12</h4>
+                        <p>
+                          Palët kontraktuese janë marrë vesh edhe për këto të drejta dhe obligime të veçanta, që nuk janë në kundërshtim me dispozitat e akteve më të larta ligjore.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 13</h4>
+                        <p>
+                          Palët kontraktuese u njoftuan për përmbajtjen e kësaj kontrate, kjo kontratë u nënshkrua në dy kopje autentike,nga të cilat secilës palë i mbetet nga një kopje.
+                        </p>
+                      </div>
+
+                      <div class="col-md-12">
+                        <h4 class="nenet2">Neni 14</h4>
+                        <p>
+                          Palët e nënshkruara në kontratë janë të njoftuara me rregullat dhe procedurat e kompanisë dhe janë në dijeni që në  rast të shkeljes së këtyre rregullave dhe procedurave do të pasojë ndëshkimi i njërës apo tjetrës palë në bazë të rregullave të caktuara apo edhe prishjes së kontratës së punës.
+                        </p>
+                      </div>
+                      
+                      <div class="col-md-12", style="margin-top:10px; margin-bottom:10px;">
+                        <p>Prishtinë, me datë: <b class="inputat"><%= @kontratum.data_nenshkrimit %> </b></p>
+                      </div>
+                      <br>
+                      <div class="col-md-12">
+        					<p>Punëmarrësi: ____________________ <i style="color:white;">haaaaaaaaaaaaaaaaa</i>Punëdhënësi: ____________________</p>
+                      </div>
+                   
+                    </div>
+                  </div>
+
+                <% end %>
+            </div>

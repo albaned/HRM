@@ -1,0 +1,418 @@
+OOP-eshte programimi i orientuar ne objekte. 
+E cila ka 4 pika qe jane:trashigimia, enkapsulimi, 
+polimorfizmi dhe abstraksioni.
+PERGJITHESI
+
+Ruby eshte gjuhe programuese e orientuar ne objekte.
+
+Rails eshte framework i shkruar ne ruby. Eshte MVC framework ku siguron
+strukturat per databaze, web service dhe web faqet.
+
+Web Serviset jane servise te bazuara ne web aplikacione qe 
+nderveprojne me web aplikcaione tjera te interntetit per
+shkembimin e te dhenave.
+
+MVC eshte framework per ndertimin e web aplikacioneve
+M-model
+   eshte pjesa qe merret me logjiken e te dhenave.dmth behet
+   lidhja me DB ku krijohen kalsat.
+V-view
+   presenton elementet ne user interface(te gjitha gjerat
+    qe perdoruesi i sheh)
+C-control
+   i merr urdherat nga perdoruesi, i ben llogaritjet dhe nese
+   ka pune me DB shkon tek modeli dhe i merr ato tdhena qe i 
+   duhen.
+
+Agile eshte nje grup i metodave per zhvillimin e softuerit ne te cilen
+kerkesat dhe zgjidhjet zhvillohen permes bashkepunimit veteorganizues dhe ekipit.
+EX,Scrum,Crystal,DSDM
+
+Anet e mira te Ruby
+
+Eshte open-source dhe gjuhe programuese e orientuar ne objekte. 
+-----------------------------------------------------------------
+
+RAILS  CHAPTER 1-2
+
+ls- liston qfare permbane
+mkdir- krijon nje direktori
+cd- ndryshon direktorin ku ndodhesh
+cd.. - kthehet nje direktori me perpara
+cd ~ - kthehesh ne home direktori
+mv- e move ose rename file
+cp- mi kopju nje file
+rm- remove file
+rmdir- remove empty direktori
+rm -rf -remove nje nonempty direktori
+cat- e lidhe ose shfaq permbajtjen e nje file
+
+rails _4.2.0_ new hello_app -krijon nje aplikacion te ri
+
+app/- perfshine models,views,controllers and helpers
+app/assets- ruhen CSS, JS,img
+bin/- filet binare
+config/ - konfigurimi i aplikacionit
+db/- filet e databazes
+doc/ - dokumentacioni i aplikacionit
+lib/ - modulet e librarive
+lib/assets- librarite e CSS,JS,img
+log/- application log files
+public/- te dhenat per publikun si p.sh error pages
+bin/rails- nje program per gjenerimin e kodi, startimin e local server-it
+test/ - testet e aplikacionit
+tmp/- filet e perkohshem
+vendor/assets- asetet third-party CSS,JS,img
+README.rdoc - pershkrim i shkurter i aplikacionit
+Rakefile - sherbimet qe jane ne dispozicion permes komandes rake
+Gemfile- Gemat per aplikacion
+Gemfile.lock - list e gemave qe siguron qe te gjitha kopjet e app
+perdorin te njejtin version te gemave
+config.ru - nje file konfigurimi per rake middleware
+.gitignore- modele te fileave qe duhet te injorohen nga GIT
+
+bundle install- instalon gemat qe nevoiten
+rails server -starton serverin
+
+tek application_controller.rb
+	def hello
+	  render text: "hello,world"
+	end
+tek routes.rb
+	root 'application#hello'
+	root 'emrikontrollerit#aksioni'
+dmth shkon tek aksioni hello dhe ne browser e kthen
+hello,world
+
+Git eshte nje version control sistem qe na lejon ti ndjekim
+ndryshimet ne kodin e projektit, te bashkepunojme me lehte,
+dhe per te kthyer ndonje gabim te papritur(p.sh fshirja e ndonje file).
+
+git init
+git remote add origin git@ipp:dea.m:projekti.git
+git clone git@ipp:dea.m:projekti.git
+git pull git@ipp:dea.m:projekti.git
+git init
+git add -A
+git status
+git commit -m "koment"
+git push -u origin master
+
+Heroku eshte nje platforme e re qe na mundson vendosjen e aplikacioneve
+ne web. Perdor PostgreSQL databaze.ne production
+
+rails generate scaffold User name:string email:string
+dmth krijon modelin e te dhenave user qe ka emrin dhe email 
+ndersa id krijohet automatikisht
+
+bundle exec rake db:migrate bene db update ku shton modelin users.
+
+validimi per sa shkronja mi permbajte kontenti
+shkojim tek modeli p.sh microposts.rb
+	validates :content, length: {maximum: 140}
+validimi qe mos te jete i zbrazet
+	validates FILL_IN, presence: true
+
+lidhjet behen gjithashtu tek modelet user.rb,microposts.rb
+tek users has_many :microposts
+tek microposts belongs_to :user.
+
+rails console- per tu qasur ne DB, per te bere ndryshime.
+
+f1= User.first (e merr userin e pare dhe e ruan ne f1)
+--------------------------------------------------------------
+
+Static Pages - Chapter 3
+
+bundle exec rake db:migrate 
+per mi kthy migrate
+bundle exec rake db:rollback
+per mu kthy ne fillim
+bundle exec rake db:migrate VERSIONN=0
+
+get 'static_pages/home' kerkon aksionin home ne kontrollerin
+static pages.
+get -eshte se kur generohet aksioni home brenda kontrollerit
+static_pages ne automatikisht e marrim faqen ne adres.
+
+HTTP- i referohet operacioneve ne mes te klientit-pc 
+(hapja e nje shfletuesi chrome,firefox) dhe serverit 
+(hapja e nje serveri si Apache)
+
+TDD-Test-driven-develope eshte teknike ku programeri shkruan
+se pari testet e deshtuara pasataj shkruan kodin per te kaluar
+ato teste.
+
+Per te bere nje test tek static_pages_controller_test.rb
+
+    test "should get home" do
+   	get :home
+    	assert_response "success
+     end
+per te shikuar a eshte kryer me sukses
+bundle exec rake test
+-----------------------------------------------
+IRB
+
+17+ 42
+59
+
+stringjet
+
+"foo"
+foo
+"foo"+"bar"
+foobar
+
+first_name="dea"
+dea
+"#{first_name} mac" (quhet interpolation)
+dea mac
+
+puts "foo"
+foo
+=>nill (e qet ne rresht te ri nill)
+
+print "foo"
+foo=>nill
+
+'foo'
+foo
+
+'#{foo} bar'
+me apostrofa ' ' nuk e lejon interpolation-in
+
+"foobar".length
+6
+
+"foobar".isempty?
+false
+
+s="foobar"
+is f.empty?
+   "empty"
+else
+   "nonempty"
+end
+nonempty
+
+mujim me perdore if ,ifelse , &&,|| dhe !
+
+x="foo"
+foo
+y=""
+
+puts "both empty" if x.empty? && y.empty?
+nill
+puts "one empty" if x.empty? || y.empty?
+one empty
+puts "x not empty" if !x.empty?
+nill  (e kthen veq te dyten)
+
+metoda to_s
+nil.empty?
+error
+nil.to_s.empty? (e kthen ne string dhe e merr te zbrazet)
+true
+
+metoda nil?
+"foo".nil?
+false
+"".nil?
+false
+nil.nil?
+true
+
+metoda unless
+string ="d"
+puts "the '#{string}' is nonempty" unless string.empty?
+the d is nonempty
+
+definimi i metodave tek irb
+
+def string_msg(str='')
+  if str.empty?
+	"its empty"
+  else
+	"its not empty"
+  end
+end
+string_msg
+puts string_msg("foobar")
+its not empty
+puts string_msg("")
+its empty
+puts string_msg
+its empty
+
+
+ARRAY
+"foo bar baz".split
+["foo","bar,"baz"] e ndan stringun ne varg duke 
+i split hapsirat
+
+"fooxbarxbazx".split('x')
+["foo","bar","baz"] i ndan ku ka X
+
+array fillon prej pozites 0
+a=[42,8,17]
+42,8,17
+a[0]
+42
+a[1]
+8
+a[2]
+17
+
+
+a.first
+42
+a.second
+8
+a.last
+17
+
+x=a.length
+3
+x ==3
+true
+x==1
+false
+x!= 1 
+true
+x>=1
+true
+x <1
+false
+
+a.empty?
+false
+a.include?(42)
+true
+a.sort
+[8,17,42]
+a.reverse
+[17,8,42]
+a.shuffle
+[17,42,8]
+a
+[42,8,17]
+asnjera nga metodat nuk e ndryshon vargun.kthehet si ne fillim.
+
+a
+[42,8,17]
+a.sort!
+[8,17,42]
+a
+[8.17.42]
+nuk ndryshon,mbet i ndryshuar
+
+a.push(6)
+[42,8,17,6]
+a << 7
+[42,8,17,6,7]
+a << "foo" << "bar"
+[42,8,17,6,7,"foo","bar"]
+
+
+a
+[42,8,17]
+a.join
+"42817"
+a.join(', ')
+"42,8,17"
+
+
+(0..9).to_a
+[0,1,2,3,4,5,6,7,8,9]
+
+
+a=%w[foo bar baz quux]
+["foo","bar","baz","quux"]
+a[0..2]
+["foo","bar","baz"]
+
+a=(0..9).to_a
+[0,1,2,3,4,5,6,7,8,9]
+a[2..(a.length-a)]
+[2,3,4,5,6,7,8,9]
+a[2..-1]
+[2,3,4,5,6,7,8,9]
+
+kjo vlen gjithashtu edhe me karaktere
+('a'..'e').to_a
+["a","b","c","d","e"]
+
+KLASAT NE RUBY
+
+class Customer
+	@@no_cost=0
+end
+
+Objektet jane instanca te klases
+
+cot1= Customer. new
+cot2= Customer. new
+Variablat globale fillojne me $.
+Variablat instances fillojne me @
+Variablat e klases fillojne me @@
+
+
+class Example
+   VAR1 = 100
+   VAR2 = 200
+   def show
+       puts "Value of first Constant is #{VAR1}"
+       puts "Value of second Constant is #{VAR2}"
+   end
+end
+
+# Create Objects
+object=Example.new()
+object.show
+
+rezultati:
+Value of first Constant is 100
+Value of second Constant is 200
+
+def new
+    @user= User.new
+end
+
+def create
+   @user= User.new(user_params)
+   if @user.save
+     redirect_to(:action => 'perdoruesit')
+   else
+     render('forma_regj')
+   end
+end
+
+def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to(:action => 'show', :id => @user.id)
+    else
+        render('edit')
+    end
+  end
+
+
+def edit
+    if current_user.role_id == 1
+      @user = User.find(params[:id])
+    else
+      redirect_to(:action => 'home')
+    end
+  end
+
+
+def delete
+    @user = User.find(params[:id])
+  end
+
+def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to(:action => 'punetoret')
+  end

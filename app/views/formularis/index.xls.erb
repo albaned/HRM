@@ -1,0 +1,74 @@
+<table class="table">
+  <thead>
+    <th>Data Aplikimit</th>
+    <th>Pozita</th>
+    <th>Emri</th>
+    <th>Mbiemri</th>
+    <th>Ditelindja</th>
+    <th>Vendlindja</th>
+    <th>Nacionaliteti</th>
+    <th>Leternjoftimi</th>
+    <th>Tel</th>
+    <th>Email</th>
+    <th>Edukimi from:</th>
+    <th>Edukimi to:</th>
+    <th>Institucioni</th>
+    <th>Drejtimi</th>
+    <th>Titulli i Drejtimit</th>
+    <th>Eksperienca From:</th>
+    <th>Eksperienca To:</th>
+    <th>Eksperienca ne Kompani</th>
+    <th>Pozita e Eksperiences</th>
+    <th>Gjuha</th>
+    <th>Niveli i Gjuhes</th>
+    <th>Njohurit Kompjuterike</th>
+    <th>Emri i References</th>
+    <th>Intervista</th>
+    <th>Testet</th>
+    <th>Kontrata From</th>
+    <th>Kontrata To</th>
+    <th>Paga</th>
+
+
+    <th></th>
+  </thead>
+  <% @formularis.reverse.each do |formulari| %>
+  <tr>
+    <td><%= formulari.created_at %></td>
+    <td> <%@pozi.each do |p| %>
+        <% if p.id == formulari.pozi_id %>
+            <%= p.description %>
+            <% end %> 
+            <% end %>
+    </td>
+    <td><%= formulari.emri %></td>
+    <td><%= formulari.mbiemri %></td>
+    <td><%= formulari.ditelindja %></td>
+    <td><%= formulari.vendlindja %></td>
+    <td><%= formulari.leternjoftimi %></td>
+    <td><%= formulari.tel %></td>
+    <td><%= formulari.email %></td>
+    <td><%= formulari.edukimi_from %></td>
+    <td><%= formulari.edukimi_to %>
+        <% if formulari.ongoing == true %>
+            <%= "Ongoing" %>
+        <% end %>
+    </td>
+    <td><%= formulari.edukimi_institucioni %></td>
+    <td><%= formulari.edukimi_drejtimi %></td>
+    <td><%= formulari.edukimi_titulli %></td>
+    <td><%= formulari.eksperienca_from %></td>
+    <td><%= formulari.eksperienca_to %></td>
+    <td><%= formulari.eksperienca_kompania %></td>
+    <td><%= formulari.eksperienca_pozita %></td>
+    <td><%= formulari.gjuha %></td>
+    <td><%= formulari.gjuha_niveli %></td>
+    <td><%= formulari.njohurit_kompjuterike %></td>
+    <td><%= formulari.referenca_emri %></td>
+    <td><%= formulari.intervista %></td>
+    <td><%= formulari.testet %></td>
+    <td><%= formulari.kontrata_from %></td>
+    <td><%= formulari.kontrata_to %></td>
+    <td><%= formulari.page %></td>
+    <% end %>
+  </table>

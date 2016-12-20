@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <th><%= name(session[:lan]) %></th>
+    <th><%= surname(session[:lan]) %></th>
+    <th>Email</th>
+  </thead>
+  <% @punetoris.each do |punetori| %>
+  <tr>
+    <td><%= punetori.emri %></td>
+    <td><%= punetori.mbiemri %></td>
+    <td><%= punetori.email %></td>
+
+        <% end %>
+</table>
